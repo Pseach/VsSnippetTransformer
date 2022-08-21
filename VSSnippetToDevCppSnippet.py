@@ -2,6 +2,7 @@ import re
 import os
 import getpass
 
+
 class SnippetData:
     def __init__(self, File_Name='', SnippetType='', Title='', Description='', Shortcut='', Language='', codes=''):
         self.File_Name = File_Name
@@ -66,13 +67,15 @@ def readFile():
         return
     print('转化为DevC++Snippet')
     if not os.path.exists('Out'): os.mkdir('Out')
-    with open('./Out/codeinsertion.ini', 'w+', encoding='utf-8') as file_obj: pass
+    with open('./Out/codeinsertion.ini', 'w+', encoding='utf-8') as file_obj:
+        pass
     path = './Snippets/'
     files = os.listdir(path)
     for file_name in files:
         getDatas(path, file_name)
     print("Successful Operation!")
     print(r"请将./Out中的codeinsertion.ini 放到 C:\Users\{}\AppData\Roaming\Dev-Cpp中".format(getpass.getuser()))
+
 
 if __name__ == "__main__":
     readFile()

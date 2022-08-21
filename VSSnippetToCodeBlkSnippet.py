@@ -2,6 +2,7 @@ import re
 import os
 import getpass
 
+
 class SnippetData:
     def __init__(self, File_Name='', SnippetType='', Title='', Description='', Shortcut='', Language='', codes=''):
         self.File_Name = File_Name
@@ -12,7 +13,9 @@ class SnippetData:
         self.Language = Language
         self.codes = codes
 
+
 idx = 0
+
 
 # 处理特殊符号
 def conversCode(code):
@@ -20,6 +23,7 @@ def conversCode(code):
     code = code.replace('$end$', '|-|')  # 终止符
     code = code.replace('$', '')  # 删掉$
     return code
+
 
 # 将单个snippet输出到对应整合文件
 def writeToCodeBlocks(obj):
@@ -30,7 +34,7 @@ def writeToCodeBlocks(obj):
     idx += 1
     with open('./Out/codesnippets.xml', 'a+', encoding='utf-8') as file_obj:
         prefix = obj.Shortcut
-        body = obj.codes.replace("|_|", "&#x0D;&#x0A;").replace("|-|", "").replace("<","&lt;").replace(">","&gt")
+        body = obj.codes.replace("|_|", "&#x0D;&#x0A;").replace("|-|", "").replace("<", "&lt;").replace(">", "&gt")
         passage = (
             "\t<item name=\"{}\" type=\"snippet\" ID=\"{}\">\n"
             "\t\t<snippet>{}</snippet>\n"
@@ -79,6 +83,7 @@ def readFile():
         file_obj.write("</snippets>")
     print("Successful Operation!")
     print(r"请将./Out中的codesnippets.xml放到 C:\Users\{}\AppData\Roaming\CodeBlocks中".format(getpass.getuser()))
+
 
 if __name__ == "__main__":
     readFile()

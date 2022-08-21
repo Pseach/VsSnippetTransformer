@@ -2,6 +2,7 @@ import re
 import os
 import getpass
 
+
 class SnippetData:
     def __init__(self, File_Name='', SnippetType='', Title='', Description='', Shortcut='', Language='', codes=''):
         self.File_Name = File_Name
@@ -84,6 +85,7 @@ def readFile():
         file_obj.write("}")
     print("Successful Operation!")
     print(r"请将./Out中的vscode.code-snippets放到 C:\Users\{}\AppData\Roaming\Code\User\snippets中".format(getpass.getuser()))
+
 
 if __name__ == "__main__":
     readFile()
